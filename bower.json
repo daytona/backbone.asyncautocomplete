@@ -1,0 +1,36 @@
+{
+  "name": "backbone.asyncautocomplete",
+  "main": "index.js",
+  "version": "0.0.1",
+  "authors": [
+    "Carl Törnqvist <calle.tornqvist@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "description": "Autocomplete with async support as Backbone View",
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "browserify": "^6.2.0",
+    "uglify-js": "^2.4.15",
+    "underscore": "^1.7.0"
+  },
+  "keywords": [
+    "backbone",
+    "view",
+    "async",
+    "datalist",
+    "pollyfill",
+    "autocomplete"
+  ]
+}

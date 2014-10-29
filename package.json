@@ -1,5 +1,5 @@
 {
-  "name": "backbone-async-autocomplete",
+  "name": "backbone.asyncautocomplete",
   "version": "0.0.1",
   "description": "Autocomplete with async support as Backbone View",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/daytona/backbone-async-autocomplete"
+    "url": "https://github.com/daytona/backbone.asyncautocomplete"
   },
   "keywords": [
     "backbone",
@@ -22,7 +22,13 @@
   "author": "Carl Törnqvist <calle.tornqvist@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daytona/backbone-async-autocomplete/issues"
+    "url": "https://github.com/daytona/backbone.asyncautocomplete/issues"
   },
-  "homepage": "https://github.com/daytona/backbone-async-autocomplete"
+  "homepage": "https://github.com/daytona/backbone.asyncautocomplete",
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "browserify": "^6.2.0",
+    "uglify-js": "^2.4.15",
+    "underscore": "^1.7.0"
+  }
 }
