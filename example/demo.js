@@ -5,29 +5,37 @@ Backbone.$ = $; // loading jquery via cdnjs,but could do it via browserify too
 
 var Autocomplete = require('../index');
 
-var Collection = Backbone.Collection.extend({
-  // url: 'http://jsonplaceholder.typicode.com/users'
+var AsyncCollection = Backbone.Collection.extend({
+  url: 'http://jsonplaceholder.typicode.com/users'
 });
 
 var MyItem = Autocomplete.Item.extend({
   foo: 'bar',
-  template: _.template('<li <% if (data.isSelected) { %>class="is-selected"<% } %>><%= data.name %></li>')
+  template: _.template('<li class="Autocomplete-item<% if (data.isSelected) { %> is-selected<% } %>"><%= data.name %> <em>(<%= data.username %>)</em></li>')
 });
 
-var MyAutocomplete = Autocomplete.define({
+var Names = Autocomplete.define({
   ItemView: MyItem,
-  searchAttr: 'name',
   filterAttr: 'name',
-  wait: 5000
 }).extend({
-  initialize: function () {
-    'use strict';
-
-    console.log(this.cid);
-  }
+  template: _.template('<ul class="Autocomplete" />')
 });
 
-new MyAutocomplete({
-  el: Backbone.$('#input'),
-  collection: new Collection(data)
+var Usernames = Autocomplete.define({
+  ItemView: MyItem,
+  searchAttr: 'username',
+  filterAttr: 'username',
+  wait: 400
+}).extend({
+  template: _.template('<ul class="Autocomplete" />')
+});
+
+new Names({
+  el: Backbone.$('#input_static'),
+  collection: new Backbone.Collection(data)
+});
+
+new Usernames({
+  el: Backbone.$('#input_async'),
+  collection: new AsyncCollection()
 });
