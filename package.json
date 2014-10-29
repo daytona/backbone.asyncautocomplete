@@ -1,0 +1,28 @@
+{
+  "name": "backbone-async-autocomplete",
+  "version": "0.0.1",
+  "description": "Autocomplete with async support as Backbone View",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "npm run build && open ./test/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daytona/backbone-async-autocomplete"
+  },
+  "keywords": [
+    "backbone",
+    "view",
+    "async",
+    "datalist",
+    "pollyfill",
+    "autocomplete"
+  ],
+  "author": "Carl Törnqvist <calle.tornqvist@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daytona/backbone-async-autocomplete/issues"
+  },
+  "homepage": "https://github.com/daytona/backbone-async-autocomplete"
+}
