@@ -84,6 +84,6 @@ function (value, model, index, list) {
 
 ### Default DOM methods
 
-This script makes an effort not to assume anything about how you might set states and name your CSS classes. There was, however, some occations upon which the script need to change markup in the DOM without calling the `template` methods. These occations are when the collection is fetching models, on fetch error and on model selection (using enter and arrow keys).
+This script makes an effort not to assume anything about how you might set states or name your CSS classes. There are, however, some occations upon which the script need to change markup in the DOM without calling the `template` methods. These occations are when the collection is fetching models, on fetch error and on model selection (using enter and arrow keys).
 
-The classes follow the [SUIT syntax](http://suitcss.github.io). If theres classes are not toy your liking. overwrite the Autocomplete's `onSync`, `onError` and `onRequest` methods. As well as the Item's `onSelect` method.
+The classes follow the [SUIT syntax](http://suitcss.github.io). If these classes are not to your liking, overwrite the Autocomplete's `onSync`, `onError` and `onRequest` methods. As well as the Item's `onSelect` method.
