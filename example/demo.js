@@ -15,14 +15,14 @@ var MyItem = Autocomplete.Item.extend({
 });
 
 var Names = Autocomplete.define({
-  ItemView: MyItem,
+  Item: MyItem,
   filterAttr: 'name',
 }).extend({
   template: _.template('<ul class="Autocomplete" />')
 });
 
 var Usernames = Autocomplete.define({
-  ItemView: MyItem,
+  Item: MyItem,
   searchAttr: 'username',
   filterAttr: 'username',
   wait: 400
