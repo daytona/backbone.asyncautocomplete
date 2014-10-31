@@ -54,11 +54,16 @@ new MyAutocomplete({
 
 The `define` method takes a hash of special options that are used by the view itself.
 
-- `Item` The view class to be used for individual autocomplete list items. *Default*: `AsyncAutocomplete.Item`.
-- `wait` how long to wait after user input before performing a fetch. *Default*: `250`.
-- `filterAttr` The model attribute which to use for the filtering the collection. For special filtering needs where just one attribute is not enough, see [`search`](#search-method). *Default*: `label`.
-- `searchAttr` When calling fetch on the collection, this will be query parameter holding the search term like so: `{data: {'SEARCH_ATTR': 'Daytona'}}`. For more advanced need, configure the collection's fetch method. *Default*: `search`.
-- `threshold` The minimum number of characters required before performing a fetch call. *Default*: `2`.
+- `Item` The view class to be used for individual autocomplete list items.
+  - Default: `AsyncAutocomplete.Item`.
+- `wait` How long to wait after user input before performing a fetch.
+  - *Default*: `250`.
+- `filterAttr` The model attribute which to use for the filtering the collection. For special filtering needs where just one attribute is not enough, see [`search`](#search-method).
+  - *Default*: `label`.
+- `searchAttr` When calling fetch on the collection, this will be query parameter holding the search term like so: `{data: {'SEARCH_ATTR': 'Daytona'}}`. For more advanced need, configure the collection's fetch method.
+  - *Default*: `search`.
+- `threshold` The minimum number of characters required before performing a fetch call.
+  - *Default*: `2`.
 
 ### Async requirements
 
