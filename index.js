@@ -5,7 +5,7 @@
     // AMD. Register as an anonymous module.
     define('backbone.asyncautocomplete', ['./lib/autocomplete-view'], factory);
   } else if (typeof exports === 'object') {
-    // Node.
+    // CommonJS.
     module.exports = factory(require('./lib/autocomplete-view'));
   }
 
