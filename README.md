@@ -1,6 +1,6 @@
 # Backbone.AsyncAutocomplete
 
-A fairly straight forward autocomplete based on Backbone. Sure, this might be the millionths autocomplete out there but it does have some features that puts it apart from your run-of-mill-jQuery plugin. Primarily it exposes both the autocomplete list itself for you to extend upon, add methods and foremost define your very own template method. It also exposes the autocomplete item view for you to extend up (and ofc. also apply a custom template method). By exposing these two views you have complete control over what goes in on the DOM and also gives you full power to manipulate and listen to it's internal events and state changes. Also, as the name implies, it's built with asynchronous autocomplete in mind, *but in no way required*.
+A fairly straight forward autocomplete based on Backbone. Sure, this might be the millionths autocomplete out there but it does have some features that puts it apart from your run-of-mill-jQuery plugin. Primarily it exposes both the autocomplete list itself for you to extend upon, add methods and foremost define your very own template method. It also exposes the autocomplete item view for you to extend on (and ofc. also apply a custom template method). By exposing these two views you have complete control over what goes on in the DOM and also gives you full power to manipulate and listen to it's internal events and state changes. Also, as the name implies, it's built with asynchronous autocomplete in mind, *but in no way required*.
 
 ## Getting started
 
