@@ -21,8 +21,6 @@
   "description": "Autocomplete with async support as Backbone View",
   "dependencies": {
     "backbone": "^1.1.2",
-    "browserify": "^6.2.0",
-    "uglify-js": "^2.4.15",
     "underscore": "^1.7.0"
   },
   "keywords": [
@@ -32,5 +30,8 @@
     "datalist",
     "pollyfill",
     "autocomplete"
-  ]
+  ],
+  "devDependencies": {
+    "browserify": "^6.2.0"
+  }
 }

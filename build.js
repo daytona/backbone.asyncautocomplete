@@ -10,6 +10,7 @@ var bower = _.extend(bower, {
   description: spec.description,
   main: spec.main,
   dependencies: spec.dependencies,
+  devDependencies: spec.devDependencies,
   keywords: spec.keywords
 });
 
