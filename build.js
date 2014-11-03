@@ -3,6 +3,14 @@ var _ = require('underscore');
 var spec = require('./package.json');
 var bower = require('./bower.json');
 var browserify = require('browserify');
+var requirejs = require('requirejs');
+
+var PATHS = {
+  'backbone.asyncautocomplete': './index',
+  'underscore': './node_modules/underscore/underscore',
+  'backbone': './node_modules/backbone/backbone',
+  'jquery': './node_modules/jquery/dist/jquery'
+};
 
 var bower = _.extend(bower, {
   name: spec.name,
@@ -14,10 +22,24 @@ var bower = _.extend(bower, {
   keywords: spec.keywords
 });
 
-// build our bower package
+// Build our bower package
 fs.writeFileSync('bower.json', JSON.stringify(bower, null, 2));
 
-// build minified file
+// Build demo file
 browserify('./example/demo.js')
   .bundle()
   .pipe(fs.createWriteStream('./example/demo.min.js'));
+
+// Build Browserify test suite
+browserify('./test/test.commonjs.js')
+  .bundle()
+  .pipe(fs.createWriteStream('./test/test.commonjs.min.js'));
+
+// Build AMD test suite
+requirejs.optimize({
+  paths: PATHS,
+  optimize: 'none',
+  baseUrl: '.',
+  name: 'test/test.amd',
+  out: './test/test.amd.min.js'
+});

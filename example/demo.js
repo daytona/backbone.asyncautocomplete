@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var data = require('./data.json');
-Backbone.$ = $; // loading jquery via cdnjs,but could do it via browserify too
+Backbone.$ = require('jquery');
 
 var Autocomplete = require('../index');
 
