@@ -31,7 +31,7 @@ browserify('./example/demo.js')
   .pipe(fs.createWriteStream('./example/demo.min.js'));
 
 // Build Browserify test suite
-browserify('./test/test.commonjs.js')
+browserify('./test/test.js')
   .bundle()
   .pipe(fs.createWriteStream('./test/test.commonjs.min.js'));
 
@@ -40,6 +40,7 @@ requirejs.optimize({
   paths: PATHS,
   optimize: 'none',
   baseUrl: '.',
-  name: 'test/test.amd',
+  name: 'test/test',
+  insertRequire: ['test/test'],
   out: './test/test.amd.min.js'
 });
