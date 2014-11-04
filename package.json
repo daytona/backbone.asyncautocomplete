@@ -1,6 +1,6 @@
 {
   "name": "backbone.asyncautocomplete",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Autocomplete with async support as Backbone View",
   "main": "main.js",
   "scripts": {
