@@ -6,7 +6,7 @@ var browserify = require('browserify');
 var requirejs = require('requirejs');
 
 var PATHS = {
-  'backbone.asyncautocomplete': './index',
+  'backbone.asyncautocomplete': './main',
   'underscore': './node_modules/underscore/underscore',
   'backbone': './node_modules/backbone/backbone',
   'jquery': './node_modules/jquery/dist/jquery'

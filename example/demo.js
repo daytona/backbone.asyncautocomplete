@@ -3,7 +3,7 @@ var _ = require('underscore');
 var data = require('./data.json');
 Backbone.$ = require('jquery');
 
-var Autocomplete = require('../index');
+var Autocomplete = require('../main');
 
 var AsyncCollection = Backbone.Collection.extend({
   url: 'http://jsonplaceholder.typicode.com/users'

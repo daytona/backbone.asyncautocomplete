@@ -12,7 +12,7 @@
   } else if (typeof exports === 'object') {
     // CommonJS.
     module.exports = factory(
-      require('../index'),
+      require('../main'),
       require('underscore'),
       require('backbone'),
       require('jquery'));
