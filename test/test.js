@@ -161,7 +161,7 @@
         var params = (options.data && _.keys(options.data));
 
         assert.ok(
-          ((diff > 1000) && (diff < 1050)),
+          ((diff >= 1000) && (diff < 1050)),
           'wait 1000ms before request (' + margin + 'ms margin of error)');
 
         assert.ok(params && _.contains(params, 'name'), 'custom search term was used');
