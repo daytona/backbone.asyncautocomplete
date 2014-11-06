@@ -5,37 +5,57 @@ Backbone.$ = require('jquery');
 
 var Autocomplete = require('../main');
 
-var AsyncCollection = Backbone.Collection.extend({
-  url: 'http://jsonplaceholder.typicode.com/users'
-});
+(function () {
+  'use strict';
 
-var MyItem = Autocomplete.Item.extend({
-  foo: 'bar',
-  template: _.template('<li class="Autocomplete-item<% if (isSelected) { %> is-selected<% } if (isCandidate) { %> is-candidate<% } %>"><%= name %> <em>(<%= username %>)</em></li>')
-});
+  var AsyncCollection = Backbone.Collection.extend({
+    url: 'http://jsonplaceholder.typicode.com/users'
+  });
 
-var Names = Autocomplete.define({
-  Item: MyItem,
-  filterAttr: 'name',
-}).extend({
-  template: _.template('<ul class="Autocomplete" />')
-});
+  var MyItem = Autocomplete.Item.extend({
+    initialize: function () {
+      _.bindAll(this, 'onSelect', 'whenCandidate');
 
-var Usernames = Autocomplete.define({
-  Item: MyItem,
-  searchAttr: 'username',
-  filterAttr: 'username',
-  wait: 400
-}).extend({
-  template: _.template('<ul class="Autocomplete" />')
-});
+      this.listenTo(this.model, {
+        'change:isSelected': this.onSelect,
+        'change:isCandidate': this.whenCandidate
+      });
+    },
 
-new Names({
-  el: Backbone.$('#input_static'),
-  collection: new Backbone.Collection(data)
-});
+    onSelect: function (model, value, options) {
+      this.$el.toggleClass('is-selected', value);
+    },
 
-new Usernames({
-  el: Backbone.$('#input_async'),
-  collection: new AsyncCollection()
-});
+    whenCandidate: function (model, value, options) {
+      this.$el.toggleClass('is-candidate', value);
+    },
+
+    template: _.template('<li class="Autocomplete-item<% if (isSelected) { %> is-selected<% } if (isCandidate) { %> is-candidate<% } %>"><%= name %> <em>(<%= username %>)</em></li>')
+  });
+
+  var Names = Autocomplete.define({
+    Item: MyItem,
+    filterAttr: 'name',
+  }).extend({
+    template: _.template('<ul class="Autocomplete" />')
+  });
+
+  var Usernames = Autocomplete.define({
+    Item: MyItem,
+    searchAttr: 'username',
+    filterAttr: 'username',
+    wait: 400
+  }).extend({
+    template: _.template('<ul class="Autocomplete" />')
+  });
+
+  new Names({
+    el: Backbone.$('#input_static'),
+    collection: new Backbone.Collection(data)
+  });
+
+  new Usernames({
+    el: Backbone.$('#input_async'),
+    collection: new AsyncCollection()
+  });
+}());
