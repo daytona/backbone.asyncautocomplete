@@ -37,7 +37,7 @@ Exposed on the view is another class property called Item. This view is there fo
 var AsyncAutocomplete = require('backbone.asyncautocomplete');
 
 var MyItem = AsyncAutocomplete.Item.extend({
-  template: _.template('<li class="MyAutocompleteItem" />')
+  template: _.template('<li class="MyAutocompleteItem"><%= name %></li>')
 });
 
 var MyAutocomplete = AsyncAutocomplete.define({
@@ -55,15 +55,17 @@ new MyAutocomplete({
 The `define` method takes a hash of special options that are used by the view itself.
 
 - `Item` The view class to be used for individual autocomplete list items.
-  - Default: `AsyncAutocomplete.Item`.
+  - *Default: `AsyncAutocomplete.Item`*
 - `wait` How long to wait after user input before performing a fetch.
-  - *Default*: `250`.
+  - *Default: `250`*
 - `filterAttr` The model attribute which to use for the filtering the collection. For special filtering needs where just one attribute is not enough, see [`search`](#search-method).
-  - *Default*: `label`.
-- `searchAttr` When calling fetch on the collection, this will be query parameter holding the search term like so: `{data: {'SEARCH_ATTR': 'Daytona'}}`. For more advanced need, configure the collection's fetch method.
-  - *Default*: `search`.
+  - *Default: `label`*
+- `searchAttr` When calling fetch on the collection, this will be the query parameter holding the search term like so: `{data: {'SEARCH_ATTR': 'Daytona'}}`. For more advanced needs, configure your collection's fetch method.
+  - *Default: `search`*
 - `threshold` The minimum number of characters required before performing a fetch call.
-  - *Default*: `2`.
+  - *Default: `2`*
+- `limit` The maximum number of items allowed to be rendered. Useful when dealing with large data sets.
+  - *Default: `false`*
 
 ### Async requirements
 
@@ -85,10 +87,12 @@ function (value, model, index, list) {
 }
 ```
 
-## Notes
+## Handling states
 
-### Default DOM methods
+This script makes an effort to not assume anything about how you might set states or name your CSS classes. Using the item attributes `isSelected` and `isCandidate` in the template will get you part of the way but you will also have to append classes and whatnot to the items as these attributes change. Have a look at the [example](example/demo.js) to see how it can be done.
 
-This script makes an effort not to assume anything about how you might set states or name your CSS classes. There are, however, some occations upon which the script need to change markup in the DOM without calling the `template` methods. These occations are when the collection is fetching models, on fetch error and on model selection (using enter and arrow keys).
+### `isSelected`
+Only one model at a time may be "selected". A model becomes selected whenever the user clicks on it or navigates to it (using their arrow keys) and then hit the `enter` key.
 
-The classes follow the [SUIT syntax](http://suitcss.github.io). If these classes are not to your liking, overwrite the Autocomplete's `onSync`, `onError` and `onRequest` methods. As well as the Item's `onSelect` method.
+### `isCandidate`
+A candidate item is pretty much the same as hovering an item. Whenever an item is navigated to using the arrow keys, it becomes a "candidate". There can be only one candidate in a collection.
