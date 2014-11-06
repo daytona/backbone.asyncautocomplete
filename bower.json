@@ -28,8 +28,6 @@
     "backbone",
     "view",
     "async",
-    "datalist",
-    "pollyfill",
     "autocomplete"
   ],
   "devDependencies": {

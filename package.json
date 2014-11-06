@@ -15,8 +15,6 @@
     "backbone",
     "view",
     "async",
-    "datalist",
-    "pollyfill",
     "autocomplete"
   ],
   "author": "Carl Törnqvist <calle.tornqvist@gmail.com>",
