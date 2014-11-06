@@ -14,16 +14,11 @@ var Autocomplete = require('../main');
 
   var MyItem = Autocomplete.Item.extend({
     initialize: function () {
-      _.bindAll(this, 'onSelect', 'whenCandidate');
+      _.bindAll(this, 'whenCandidate');
 
       this.listenTo(this.model, {
-        'change:isSelected': this.onSelect,
         'change:isCandidate': this.whenCandidate
       });
-    },
-
-    onSelect: function (model, value, options) {
-      this.$el.toggleClass('is-selected', value);
     },
 
     whenCandidate: function (model, value, options) {
