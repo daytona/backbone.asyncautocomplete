@@ -16,7 +16,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "example"
   ],
   "description": "Autocomplete with async support as Backbone View",
   "dependencies": {
