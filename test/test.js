@@ -41,7 +41,11 @@
     "name": "Glenna Reichert"
   }, {
     "name": "Clementina DuBuque"
-  }];
+  }].map(function (model, index, list) {
+    // The default item template expects a label
+    model.label = _.uniqueId('label-');
+    return model;
+  });
 
   Backbone.$ = (Backbone.$ || $);
 
