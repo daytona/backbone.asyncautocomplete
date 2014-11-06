@@ -68,7 +68,7 @@
         $('body').append($el);
       },
       teardown: function () {
-        $('#input').remove();
+        $('#input').trigger('blur').remove();
       }
     });
 
