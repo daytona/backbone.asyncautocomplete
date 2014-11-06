@@ -1,7 +1,7 @@
 {
   "name": "backbone.asyncautocomplete",
   "main": "main.js",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "authors": [
     "Carl Törnqvist <calle.tornqvist@gmail.com>"
   ],
