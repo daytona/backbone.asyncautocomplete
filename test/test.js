@@ -43,7 +43,7 @@
     "name": "Clementina DuBuque"
   }].map(function (model, index, list) {
     // The default item template expects a label
-    model.label = _.uniqueId('label-');
+    model.label = model.name;
     return model;
   });
 
@@ -96,15 +96,25 @@
       assert.ok(!view.model.has('value'), 'No initial value');
 
       $el.val('test').trigger('change');
-
       assert.strictEqual($el.val(), view.model.get('value'), 'Changes with DOM');
     });
 
     QUnit.test('Custom settings', function (assert) {
+      var count;
       var $el = $('#input');
       var CustomView = AsyncAutocomplete.define({
         filterAttr: 'name',
-        threshold: 4
+        threshold: 3,
+        limit: 1
+      });
+      var superRender = CustomView.prototype.render;
+
+      CustomView = CustomView.extend({
+        render: function (models, cache) {
+          superRender.call(this, models, cache);
+          count = cache.$list.children().length;
+          return this;
+        }
       });
 
       var view = new CustomView({
@@ -112,13 +122,14 @@
         collection: new Backbone.Collection(DATA)
       });
 
-      $el.val('lea').trigger('change');
-
+      $el.val('le').trigger('change');
       assert.strictEqual(view.filter().length, 0, 'Threshold prevents filtering');
 
-      $el.val('lean').trigger('change');
-
+      $el.val('lea').trigger('change');
       assert.ok((view.filter().length > 0), 'Filters by custom attribute');
+
+      $el.val('enn').trigger('change');
+      assert.strictEqual(count, 1, 'Limits number of rendered results');
     });
 
     QUnit.test('Default search method', function (assert) {
@@ -133,11 +144,9 @@
       });
 
       $el.val('na').trigger('change');
-
       assert.strictEqual(view.filter().length, 3, '"na" gives three hits');
 
       $el.val('foo').trigger('change');
-
       assert.strictEqual(view.filter().length, 0, '"foo" gives no hits');
     });
 
