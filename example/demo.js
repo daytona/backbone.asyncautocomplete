@@ -11,7 +11,7 @@ var AsyncCollection = Backbone.Collection.extend({
 
 var MyItem = Autocomplete.Item.extend({
   foo: 'bar',
-  template: _.template('<li class="Autocomplete-item<% if (data.isSelected) { %> is-selected<% } %>"><%= data.name %> <em>(<%= data.username %>)</em></li>')
+  template: _.template('<li class="Autocomplete-item<% if (isSelected) { %> is-selected<% } if (isCandidate) { %> is-candidate<% } %>"><%= name %> <em>(<%= username %>)</em></li>')
 });
 
 var Names = Autocomplete.define({
