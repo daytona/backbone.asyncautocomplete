@@ -66,6 +66,8 @@ The `define` method takes a hash of special options that are used by the view it
   - *Default: `2`*
 - `limit` The maximum number of items allowed to be rendered. Useful when dealing with large data sets.
   - *Default: `false`*
+- `autoCandidate` Whether to automatically pick first suggestion as candidate.
+  - *Default: `true`*
 
 ### Async requirements
 
